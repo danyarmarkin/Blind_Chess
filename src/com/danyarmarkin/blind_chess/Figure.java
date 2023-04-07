@@ -10,6 +10,7 @@ public class Figure {
     private boolean isAlive = true;
     private boolean isWhite = true;
 
+
     public boolean isAlive() {
         return isAlive;
     }
@@ -53,6 +54,10 @@ public class Figure {
         this.x = x;
         this.y = y;
         this.isWhite = isWhite;
+    }
+
+    public Figure copy() {
+        return new Figure(type, x, y, isWhite);
     }
 
     public Image getImage() {

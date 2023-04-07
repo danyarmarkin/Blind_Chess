@@ -9,7 +9,7 @@ public class Window extends JPanel {
     private static final int WIDTH = 600;
     private static final int HEIGHT = 600;
     private static final int CELL_SIZE = 64;
-    public static final int BOUNCE = 50;
+    public static final int BOUNDS = 50;
 
     private JFrame frame;
     private Player player;
@@ -30,8 +30,8 @@ public class Window extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 super.mouseClicked(e);
-                int x = (e.getX() - BOUNCE) / CELL_SIZE;
-                int y = (e.getY() - BOUNCE) / CELL_SIZE;
+                int x = (e.getX() - BOUNDS) / CELL_SIZE;
+                int y = (e.getY() - BOUNDS) / CELL_SIZE;
 
                 if (chosenFigure != null) {
                     boolean moveResult = player.getGame().move(chosenFigure.getX(), chosenFigure.getY(), x, y);
@@ -60,32 +60,32 @@ public class Window extends JPanel {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (i % 2 == 1 && j % 2 == 0 || i % 2 == 0 && j % 2 == 1) {
-                    g.fillRect(BOUNCE + j * CELL_SIZE, BOUNCE + i * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+                    g.fillRect(BOUNDS + j * CELL_SIZE, BOUNDS + i * CELL_SIZE, CELL_SIZE, CELL_SIZE);
                 }
             }
         }
 
         g.setColor(Color.GREEN);
         for (int[] p : moveVariations) {
-            g.fillOval(BOUNCE + p[0] * CELL_SIZE + CELL_SIZE / 3,
-                    BOUNCE + p[1] * CELL_SIZE + CELL_SIZE / 3,
+            g.fillOval(BOUNDS + p[0] * CELL_SIZE + CELL_SIZE / 3,
+                    BOUNDS + p[1] * CELL_SIZE + CELL_SIZE / 3,
                     CELL_SIZE / 3, CELL_SIZE / 3);
         }
 
         g.setColor(Color.black);
         for (int i = 0; i < 9; i++) {
-            int x = BOUNCE + i * CELL_SIZE;
-            g.drawLine(x, BOUNCE, x, BOUNCE + CELL_SIZE * 8);
+            int x = BOUNDS + i * CELL_SIZE;
+            g.drawLine(x, BOUNDS, x, BOUNDS + CELL_SIZE * 8);
         }
         for (int i = 0; i < 9; i++) {
-            int y = BOUNCE + i * CELL_SIZE;
-            g.drawLine(BOUNCE, y, BOUNCE + CELL_SIZE * 8, y);
+            int y = BOUNDS + i * CELL_SIZE;
+            g.drawLine(BOUNDS, y, BOUNDS + CELL_SIZE * 8, y);
         }
 
         for (Figure figure : player.getFigures()) {
             if (figure.isAlive()) {
-                int x = figure.getX() * CELL_SIZE + BOUNCE;
-                int y = figure.getY() * CELL_SIZE + BOUNCE;
+                int x = figure.getX() * CELL_SIZE + BOUNDS;
+                int y = figure.getY() * CELL_SIZE + BOUNDS;
                 g.drawImage(figure.getImage(), x, y, null);
             }
         }

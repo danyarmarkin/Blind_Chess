@@ -47,7 +47,7 @@ public class Player {
 
     public void setGame(Game game) {
         this.game = game;
-        for (WindowRepaintListener l : listeners) game.addListener(l);
+        for (WindowRepaintListener l : listeners) game.addRepaintListener(l);
     }
 
     public void addListener(WindowRepaintListener listener) {

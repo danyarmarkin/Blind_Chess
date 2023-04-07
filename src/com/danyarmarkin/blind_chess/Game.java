@@ -7,7 +7,8 @@ public class Game {
     private Player blackPlayer;
     private boolean whiteMove = true;
     private Figure[] figures = new Figure[32];
-    private ArrayList<WindowRepaintListener> listeners = new ArrayList<>();
+    private ArrayList<WindowRepaintListener> repaintListeners = new ArrayList<>();
+    private ArrayList<EndGameListener> endGameListeners = new ArrayList<>();
 
     public Game(Player whitePlayer, Player blackPlayer) {
         this.whitePlayer = whitePlayer;
@@ -19,9 +20,10 @@ public class Game {
         }
     }
 
-    public void addListener(WindowRepaintListener listener) {
-        listeners.add(listener);
+    public void addRepaintListener(WindowRepaintListener listener) {
+        repaintListeners.add(listener);
     }
+    public void addEndGameListener(EndGameListener listener) {endGameListeners.add(listener);}
 
     public boolean move(int x1, int y1, int x2, int y2) {
         Figure[] currentFigures = whiteMove? whitePlayer.getFigures() : blackPlayer.getFigures();
@@ -54,6 +56,8 @@ public class Game {
                     for (Figure f : whiteMove? blackPlayer.getFigures(): whitePlayer.getFigures()) {
                         if (f.getX() == x1 && f.getY() == y1) {
                             f.setAlive(false);
+                            if (f.getType() == Figure.Type.king)
+                                for(EndGameListener l : endGameListeners) l.onWin(whiteMove);
                             flag = true;
                             break;
                         }
@@ -66,7 +70,7 @@ public class Game {
 
                 currentFigure.setCoords(x1, y1);
                 whiteMove = !whiteMove;
-                for (WindowRepaintListener l : listeners) l.onAction();
+                for (WindowRepaintListener l : repaintListeners) l.onAction();
                 return true;
             }
         }
