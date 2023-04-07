@@ -1,7 +1,6 @@
 package com.danyarmarkin.blind_chess;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Main {
 
@@ -29,9 +28,7 @@ public class Main {
 
         figures.add(allFigures(whitePlayer, blackPlayer));
 
-        game.addRepaintListener(() -> {
-            figures.add(allFigures(whitePlayer, blackPlayer));
-        });
+        game.addRepaintListener(() -> figures.add(allFigures(whitePlayer, blackPlayer)));
 
         game.addEndGameListener(isWinnerWhite -> new HistoryWindow(figures));
     }

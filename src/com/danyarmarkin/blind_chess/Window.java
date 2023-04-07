@@ -11,14 +11,13 @@ public class Window extends JPanel {
     private static final int CELL_SIZE = 64;
     public static final int BOUNDS = 50;
 
-    private JFrame frame;
-    private Player player;
+    private final Player player;
     private int[][] moveVariations = {};
     private Figure chosenFigure = null;
 
     public Window(Player player) {
         this.player = player;
-        frame = new JFrame(player.isWhite()? "White" : "Black");
+        JFrame frame = new JFrame(player.isWhite() ? "White" : "Black");
         frame.setSize(WIDTH, HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

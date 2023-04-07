@@ -3,10 +3,10 @@ package com.danyarmarkin.blind_chess;
 import java.util.ArrayList;
 
 public class Player {
-    private boolean isWhite;
-    private Figure[] figures = new Figure[16];
+    private final boolean isWhite;
+    private final Figure[] figures = new Figure[16];
     private Game game;
-    private ArrayList<WindowRepaintListener> listeners = new ArrayList<>();
+    private final ArrayList<WindowRepaintListener> listeners = new ArrayList<>();
 
     public Player(boolean isWhite) {
         this.isWhite = isWhite;
@@ -31,10 +31,6 @@ public class Player {
 
     public boolean isWhite() {
         return isWhite;
-    }
-
-    public void setWhite(boolean white) {
-        isWhite = white;
     }
 
     public Figure[] getFigures() {

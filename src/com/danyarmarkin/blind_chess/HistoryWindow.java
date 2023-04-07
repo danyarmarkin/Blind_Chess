@@ -2,8 +2,6 @@ package com.danyarmarkin.blind_chess;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class HistoryWindow extends JPanel {

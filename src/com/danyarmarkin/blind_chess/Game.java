@@ -3,12 +3,12 @@ package com.danyarmarkin.blind_chess;
 import java.util.ArrayList;
 
 public class Game {
-    private Player whitePlayer;
-    private Player blackPlayer;
+    private final Player whitePlayer;
+    private final Player blackPlayer;
     private boolean whiteMove = true;
-    private Figure[] figures = new Figure[32];
-    private ArrayList<WindowRepaintListener> repaintListeners = new ArrayList<>();
-    private ArrayList<EndGameListener> endGameListeners = new ArrayList<>();
+    private final Figure[] figures = new Figure[32];
+    private final ArrayList<WindowRepaintListener> repaintListeners = new ArrayList<>();
+    private final ArrayList<EndGameListener> endGameListeners = new ArrayList<>();
 
     public Game(Player whitePlayer, Player blackPlayer) {
         this.whitePlayer = whitePlayer;

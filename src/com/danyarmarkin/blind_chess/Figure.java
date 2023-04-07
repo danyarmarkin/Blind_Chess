@@ -5,10 +5,10 @@ import java.awt.*;
 
 public class Figure {
     private Type type;
-    private int x = 0;
-    private int y = 0;
+    private int x;
+    private int y;
     private boolean isAlive = true;
-    private boolean isWhite = true;
+    private final boolean isWhite;
 
 
     public boolean isAlive() {
@@ -32,16 +32,8 @@ public class Figure {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public void setCoords(int x, int y) {
