@@ -47,7 +47,7 @@ public class Game {
             dy = y2 - y1;
         }
 
-        int[][] mv = getMoveVariables(x1, y1);
+        int[][] mv = getMoveVariations(x1, y1);
         for (int[] p : mv) {
             if (p[0] == x2 && p[1] == y2) {
                 while (x1 != x2 || y1 != y2) {
@@ -84,12 +84,12 @@ public class Game {
         return true;
     }
 
-    public int[][] getMoveVariables(int x, int y, boolean white) {
-        if (white == whiteMove) return getMoveVariables(x, y);
+    public int[][] getMoveVariations(int x, int y, boolean white) {
+        if (white == whiteMove) return getMoveVariations(x, y);
         return new int[][] {};
     }
 
-    public int[][] getMoveVariables(int x, int y) {
+    public int[][] getMoveVariations(int x, int y) {
         ArrayList<int[]> result = new ArrayList<>();
 
         Figure[] currentFigures = whiteMove? whitePlayer.getFigures() : blackPlayer.getFigures();

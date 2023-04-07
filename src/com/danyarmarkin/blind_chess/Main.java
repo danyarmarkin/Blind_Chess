@@ -29,7 +29,6 @@ public class Main {
 
         figures.add(allFigures(whitePlayer, blackPlayer));
 
-
         game.addRepaintListener(() -> {
             figures.add(allFigures(whitePlayer, blackPlayer));
         });

@@ -46,7 +46,7 @@ public class Window extends JPanel {
                         break;
                     }
                 }
-                moveVariations = player.getGame().getMoveVariables(x, y, player.isWhite());
+                moveVariations = player.getGame().getMoveVariations(x, y, player.isWhite());
                 repaint();
             }
         });
